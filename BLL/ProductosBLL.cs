@@ -43,12 +43,32 @@ namespace Parcial1_JuanRosa.BLL
             {
                 contexto.Entry(Producto).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
+                contexto.Dispose();
             }
             catch (Exception)
             {
 
                 throw;
             }
+            return paso;
+        }
+
+        public static bool Eliminar(int id)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+            try
+            {
+                Productos Producto = contexto.Productos.Find(id);
+                contexto.Productos.Remove(Producto);
+                paso = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
             return paso;
         }
 
