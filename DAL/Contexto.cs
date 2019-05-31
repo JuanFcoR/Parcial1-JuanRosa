@@ -10,7 +10,7 @@ namespace Parcial1_JuanRosa.DAL
 {
     public class Contexto:DbContext
     {
-        DbSet<Productos> Productos { get; set; }
+        public DbSet<Productos> Productos { get; set; }
 
         public Contexto():base("ConStr")
         {

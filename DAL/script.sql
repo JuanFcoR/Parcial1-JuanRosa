@@ -8,5 +8,6 @@ create table Productos
 	Descripcion varchar(25),
 	Costo float,
 	Existencia int,
-	ValorInventario float
+	ValorInventario float,
+	ValorTotalInventario float
 )
