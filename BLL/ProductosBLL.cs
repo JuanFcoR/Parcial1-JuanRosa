@@ -72,6 +72,24 @@ namespace Parcial1_JuanRosa.BLL
             return paso;
         }
 
+        public static Productos Buscar(int id)
+        {
+            Contexto contexto = new Contexto();
+            Productos Producto;
+            try
+            {
+                Producto = contexto.Productos.Find(id);
+                contexto.Dispose();
+            }
+           
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return Producto;
+        }
         
     }
 }
