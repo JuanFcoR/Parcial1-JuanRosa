@@ -9,5 +9,9 @@ create table Productos
 	Costo float,
 	Existencia int,
 	ValorInventario float,
-	ValorTotalInventario float
+)
+
+create table ValorTotalInventario
+(
+	
 )
