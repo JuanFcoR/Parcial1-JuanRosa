@@ -11,6 +11,7 @@ namespace Parcial1_JuanRosa.DAL
     public class Contexto:DbContext
     {
         public DbSet<Productos> Productos { get; set; }
+        public DbSet<ValorTotalDeInventario> valorTotalDeInventarios { get; set; }
 
         public Contexto():base("ConStr")
         {

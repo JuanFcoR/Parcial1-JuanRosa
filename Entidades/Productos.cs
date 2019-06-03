@@ -15,16 +15,16 @@ namespace Parcial1_JuanRosa.Entidades
         public int productoId { get; set; }
         public string Descripcion { get; set; }
         public int Existencia { get; set; }
-        public double Costo { get; set; }
-        public double ValorExistencia { get; set; }
+        public float Costo { get; set; }
+        public float ValorExistencia { get; set; }
 
         public Productos()
         {
             productoId = 0;
             Descripcion = String.Empty;
             Existencia = 0;
-            Costo = 0;
-            ValorExistencia = 0;
+            Costo = 0.0f;
+            ValorExistencia = 0.0f;
         }
 
     }

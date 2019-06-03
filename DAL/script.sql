@@ -11,7 +11,10 @@ create table Productos
 	ValorInventario float,
 )
 
-create table ValorTotalInventario
-(
-	
+create table ValorTotalDeInventario
+(ValortTotalInventarioId int Primary key,
+ValorTotalInventario float
+
 )
+
+

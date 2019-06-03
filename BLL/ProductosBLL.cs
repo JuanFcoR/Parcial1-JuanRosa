@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Parcial1_JuanRosa.Entidades;
 using Parcial1_JuanRosa.DAL;
 using System.Data.Entity;
+using System.Linq.Expressions;
 
 namespace Parcial1_JuanRosa.BLL
 {
@@ -90,6 +91,25 @@ namespace Parcial1_JuanRosa.BLL
 
             return Producto;
         }
-        
+
+        public static List<Productos> GetList(Expression<Func<Productos, bool>> expression)
+        {
+            List<Productos> Producto = new List<Productos>();
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                contexto.Productos.Where(expression).ToList();
+                contexto.Dispose();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return Producto;
+        }
+
     }
 }

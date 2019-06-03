@@ -28,21 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.ProductoIdNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.DescripcionTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.ExistenciaTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.CostoTextBox = new System.Windows.Forms.TextBox();
+            this.ValorInventarioTextBox = new System.Windows.Forms.TextBox();
+            this.BuscarButton = new System.Windows.Forms.Button();
+            this.EliminarButton = new System.Windows.Forms.Button();
+            this.GuardarButton = new System.Windows.Forms.Button();
+            this.NuevoButton = new System.Windows.Forms.Button();
+            this.SuperErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ProductoIdNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SuperErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -62,12 +65,12 @@
             this.ProductoIdNumericUpDown.Size = new System.Drawing.Size(62, 20);
             this.ProductoIdNumericUpDown.TabIndex = 1;
             // 
-            // textBox1
+            // DescripcionTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(119, 54);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(183, 20);
-            this.textBox1.TabIndex = 2;
+            this.DescripcionTextBox.Location = new System.Drawing.Point(119, 54);
+            this.DescripcionTextBox.Name = "DescripcionTextBox";
+            this.DescripcionTextBox.Size = new System.Drawing.Size(183, 20);
+            this.DescripcionTextBox.TabIndex = 2;
             // 
             // label2
             // 
@@ -89,12 +92,14 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Existencia";
             // 
-            // textBox2
+            // ExistenciaTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(119, 90);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(183, 20);
-            this.textBox2.TabIndex = 5;
+            this.ExistenciaTextBox.Location = new System.Drawing.Point(119, 90);
+            this.ExistenciaTextBox.Name = "ExistenciaTextBox";
+            this.ExistenciaTextBox.Size = new System.Drawing.Size(183, 20);
+            this.ExistenciaTextBox.TabIndex = 5;
+            this.ExistenciaTextBox.Text = "0";
+            this.ExistenciaTextBox.TextChanged += new System.EventHandler(this.ExistenciaTextBox_TextChanged);
             // 
             // label4
             // 
@@ -116,90 +121,102 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "Valor Inventario";
             // 
-            // textBox3
+            // CostoTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(119, 121);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(183, 20);
-            this.textBox3.TabIndex = 8;
+            this.CostoTextBox.Location = new System.Drawing.Point(119, 121);
+            this.CostoTextBox.Name = "CostoTextBox";
+            this.CostoTextBox.Size = new System.Drawing.Size(183, 20);
+            this.CostoTextBox.TabIndex = 8;
+            this.CostoTextBox.Text = "0.00";
+            this.CostoTextBox.TextChanged += new System.EventHandler(this.CostoTextBox_TextChanged);
             // 
-            // textBox4
+            // ValorInventarioTextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(119, 152);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(183, 20);
-            this.textBox4.TabIndex = 9;
+            this.ValorInventarioTextBox.Location = new System.Drawing.Point(119, 152);
+            this.ValorInventarioTextBox.Name = "ValorInventarioTextBox";
+            this.ValorInventarioTextBox.ReadOnly = true;
+            this.ValorInventarioTextBox.Size = new System.Drawing.Size(183, 20);
+            this.ValorInventarioTextBox.TabIndex = 9;
             // 
-            // button4
+            // BuscarButton
             // 
-            this.button4.Image = global::Parcial1_JuanRosa.Properties.Resources.buscar__1_;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(223, 11);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(79, 37);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "Buscar";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.UseVisualStyleBackColor = true;
+            this.BuscarButton.Image = global::Parcial1_JuanRosa.Properties.Resources.buscar__1_;
+            this.BuscarButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BuscarButton.Location = new System.Drawing.Point(223, 11);
+            this.BuscarButton.Name = "BuscarButton";
+            this.BuscarButton.Size = new System.Drawing.Size(79, 37);
+            this.BuscarButton.TabIndex = 13;
+            this.BuscarButton.Text = "Buscar";
+            this.BuscarButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BuscarButton.UseVisualStyleBackColor = true;
+            this.BuscarButton.Click += new System.EventHandler(this.BuscarButton_Click);
             // 
-            // button3
+            // EliminarButton
             // 
-            this.button3.Image = global::Parcial1_JuanRosa.Properties.Resources.borrar;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(245, 191);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(57, 49);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "Eliminar";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.UseVisualStyleBackColor = true;
+            this.EliminarButton.Image = global::Parcial1_JuanRosa.Properties.Resources.borrar;
+            this.EliminarButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.EliminarButton.Location = new System.Drawing.Point(245, 191);
+            this.EliminarButton.Name = "EliminarButton";
+            this.EliminarButton.Size = new System.Drawing.Size(57, 49);
+            this.EliminarButton.TabIndex = 12;
+            this.EliminarButton.Text = "Eliminar";
+            this.EliminarButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.EliminarButton.UseVisualStyleBackColor = true;
+            this.EliminarButton.Click += new System.EventHandler(this.EliminarButton_Click);
             // 
-            // button2
+            // GuardarButton
             // 
-            this.button2.Image = global::Parcial1_JuanRosa.Properties.Resources.Save_37110;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(143, 191);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(55, 49);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Guardar";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = true;
+            this.GuardarButton.Image = global::Parcial1_JuanRosa.Properties.Resources.Save_37110;
+            this.GuardarButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.GuardarButton.Location = new System.Drawing.Point(143, 191);
+            this.GuardarButton.Name = "GuardarButton";
+            this.GuardarButton.Size = new System.Drawing.Size(55, 49);
+            this.GuardarButton.TabIndex = 11;
+            this.GuardarButton.Text = "Guardar";
+            this.GuardarButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.GuardarButton.UseVisualStyleBackColor = true;
+            this.GuardarButton.Click += new System.EventHandler(this.GuardarButton_Click);
             // 
-            // button1
+            // NuevoButton
             // 
-            this.button1.Image = global::Parcial1_JuanRosa.Properties.Resources.new_page_document_16676__1_;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(36, 191);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(56, 49);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Nuevo";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = true;
+            this.NuevoButton.Image = global::Parcial1_JuanRosa.Properties.Resources.new_page_document_16676__1_;
+            this.NuevoButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.NuevoButton.Location = new System.Drawing.Point(36, 191);
+            this.NuevoButton.Name = "NuevoButton";
+            this.NuevoButton.Size = new System.Drawing.Size(56, 49);
+            this.NuevoButton.TabIndex = 10;
+            this.NuevoButton.Text = "Nuevo";
+            this.NuevoButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.NuevoButton.UseVisualStyleBackColor = true;
+            this.NuevoButton.Click += new System.EventHandler(this.NuevoButton_Click);
+            // 
+            // SuperErrorProvider
+            // 
+            this.SuperErrorProvider.ContainerControl = this;
             // 
             // rProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(322, 259);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.BuscarButton);
+            this.Controls.Add(this.EliminarButton);
+            this.Controls.Add(this.GuardarButton);
+            this.Controls.Add(this.NuevoButton);
+            this.Controls.Add(this.ValorInventarioTextBox);
+            this.Controls.Add(this.CostoTextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.ExistenciaTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.DescripcionTextBox);
             this.Controls.Add(this.ProductoIdNumericUpDown);
             this.Controls.Add(this.label1);
             this.Name = "rProductos";
             this.Text = "rProductos";
             ((System.ComponentModel.ISupportInitialize)(this.ProductoIdNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SuperErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,17 +226,18 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown ProductoIdNumericUpDown;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox DescripcionTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox ExistenciaTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox CostoTextBox;
+        private System.Windows.Forms.TextBox ValorInventarioTextBox;
+        private System.Windows.Forms.Button NuevoButton;
+        private System.Windows.Forms.Button GuardarButton;
+        private System.Windows.Forms.Button EliminarButton;
+        private System.Windows.Forms.Button BuscarButton;
+        private System.Windows.Forms.ErrorProvider SuperErrorProvider;
     }
 }
