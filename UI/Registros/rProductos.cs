@@ -34,8 +34,10 @@ namespace Parcial1_JuanRosa.UI.Registros
             Producto.productoId = Convert.ToInt32(ProductoIdNumericUpDown.Value);
             Producto.Descripcion = DescripcionTextBox.Text.ToString();
             Producto.Existencia = Convert.ToInt32(ExistenciaTextBox.Text);
-            Producto.Costo= Convert.ToSingle(CostoTextBox.Text);
-            Producto.ValorExistencia = Convert.ToSingle(ValorInventarioTextBox.Text);
+            Producto.Costo = Convert.ToSingle(CostoTextBox.Text);
+            float valor;
+            float.TryParse(ValorInventarioTextBox.Text, out valor);
+            Producto.ValorExistencia = valor;
 
             return Producto;
         }
@@ -72,7 +74,7 @@ namespace Parcial1_JuanRosa.UI.Registros
             else
                 MessageBox.Show("Producto no encontrada");
         }
-    
+
 
         private void GuardarButton_Click(object sender, EventArgs e)
         {
@@ -132,7 +134,7 @@ namespace Parcial1_JuanRosa.UI.Registros
                 }
 
             }
-            
+
             return paso;
         }
 
@@ -146,8 +148,8 @@ namespace Parcial1_JuanRosa.UI.Registros
                 MessageBox.Show("Eliminado");
             else
                 SuperErrorProvider.SetError(ProductoIdNumericUpDown, "No se puede eliminar un producto que no existe");
-        
-    }
+
+        }
 
         private void NuevoButton_Click(object sender, EventArgs e)
         {
@@ -171,7 +173,7 @@ namespace Parcial1_JuanRosa.UI.Registros
 
                 throw;
             }
-            
+
         }
 
         private void CostoTextBox_TextChanged(object sender, EventArgs e)
@@ -183,7 +185,7 @@ namespace Parcial1_JuanRosa.UI.Registros
                 float costo;
                 float.TryParse(CostoTextBox.Text, out costo);
                 float ValorInventario = existencia * costo;
-                ValorInventarioTextBox.Text = Convert.ToString(ValorInventario);
+                ValorInventarioTextBox.Text = Convert.ToString(ValorInventario.ToString());
             }
             catch (Exception)
             {
@@ -192,6 +194,24 @@ namespace Parcial1_JuanRosa.UI.Registros
             }
 
         }
+
+        private void AgregarUbicacionButton_Click(object sender, EventArgs e)
+        {
+            rUbicacion ub = new rUbicacion();
+            ub.Show();
+        }
+
+        
+
+        private void RProductos_Load(object sender, EventArgs e)
+        {
+            Contexto c = new Contexto();
+            UbicacionComboBox.DisplayMember = "Descripcion";
+            UbicacionComboBox.ValueMember = "UbicacionId";
+            UbicacionComboBox.DataSource = c.Ubicaciones.Where(p=>true).ToList();
+        }
+
+    
     }
     
 }

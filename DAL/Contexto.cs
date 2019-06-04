@@ -12,6 +12,7 @@ namespace Parcial1_JuanRosa.DAL
     {
         public DbSet<Productos> Productos { get; set; }
         public DbSet<ValorTotalDeInventario> valorTotalDeInventarios { get; set; }
+        public DbSet<Ubicaciones> Ubicaciones { get; set; }
 
         public Contexto():base("ConStr")
         {

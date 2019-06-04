@@ -21,9 +21,9 @@ namespace Parcial1_JuanRosa.UI.Consultas
             InitializeComponent();
         }
 
-        private bool ExisteEnLaBasedeDatos()
+        private bool ExisteEnLaBasedeDatos(int id)
         {
-            ValorTotalDeInventario vl = ValorTotalDeInventarioBLL.Buscar(1);
+            ValorTotalDeInventario vl = ValorTotalDeInventarioBLL.Buscar(id);
             return (vl != null);
         }
 
@@ -33,7 +33,7 @@ namespace Parcial1_JuanRosa.UI.Consultas
             ValorTotalDeInventario vl = new ValorTotalDeInventario();
             vl.ValorTotalInventarioId = 1;
             var suma = c.Productos.Sum(p => p.ValorExistencia);
-            vl.ValorTotalInventario = vl.ValorTotalInventario = Convert.ToSingle(suma);
+            vl.ValorTotalInventario = Convert.ToSingle(suma);
             c.SaveChanges();
             c.Dispose();
             return vl;
@@ -46,7 +46,7 @@ namespace Parcial1_JuanRosa.UI.Consultas
             ValorTotalDeInventario vl;
             vl = llenarClase();
 
-            if (vl.ValorTotalInventarioId == 0)
+            if (!ExisteEnLaBasedeDatos((int)vl.ValorTotalInventarioId))
             {
                 ValorTotalDeInventarioBLL.Guardar(vl);
             }
@@ -58,6 +58,7 @@ namespace Parcial1_JuanRosa.UI.Consultas
             ValorTextBox.Text = vl.ValorTotalInventario.ToString();
 
         }
+
     }
 }
 

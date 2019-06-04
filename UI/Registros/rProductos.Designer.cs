@@ -39,11 +39,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.CostoTextBox = new System.Windows.Forms.TextBox();
             this.ValorInventarioTextBox = new System.Windows.Forms.TextBox();
+            this.SuperErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.BuscarButton = new System.Windows.Forms.Button();
             this.EliminarButton = new System.Windows.Forms.Button();
             this.GuardarButton = new System.Windows.Forms.Button();
             this.NuevoButton = new System.Windows.Forms.Button();
-            this.SuperErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label6 = new System.Windows.Forms.Label();
+            this.UbicacionComboBox = new System.Windows.Forms.ComboBox();
+            this.AgregarUbicacionButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ProductoIdNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuperErrorProvider)).BeginInit();
             this.SuspendLayout();
@@ -138,6 +141,10 @@
             this.ValorInventarioTextBox.Size = new System.Drawing.Size(183, 20);
             this.ValorInventarioTextBox.TabIndex = 9;
             // 
+            // SuperErrorProvider
+            // 
+            this.SuperErrorProvider.ContainerControl = this;
+            // 
             // BuscarButton
             // 
             this.BuscarButton.Image = global::Parcial1_JuanRosa.Properties.Resources.buscar__1_;
@@ -155,7 +162,7 @@
             // 
             this.EliminarButton.Image = global::Parcial1_JuanRosa.Properties.Resources.borrar;
             this.EliminarButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.EliminarButton.Location = new System.Drawing.Point(245, 191);
+            this.EliminarButton.Location = new System.Drawing.Point(255, 259);
             this.EliminarButton.Name = "EliminarButton";
             this.EliminarButton.Size = new System.Drawing.Size(57, 49);
             this.EliminarButton.TabIndex = 12;
@@ -168,7 +175,7 @@
             // 
             this.GuardarButton.Image = global::Parcial1_JuanRosa.Properties.Resources.Save_37110;
             this.GuardarButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.GuardarButton.Location = new System.Drawing.Point(143, 191);
+            this.GuardarButton.Location = new System.Drawing.Point(142, 259);
             this.GuardarButton.Name = "GuardarButton";
             this.GuardarButton.Size = new System.Drawing.Size(55, 49);
             this.GuardarButton.TabIndex = 11;
@@ -181,7 +188,7 @@
             // 
             this.NuevoButton.Image = global::Parcial1_JuanRosa.Properties.Resources.new_page_document_16676__1_;
             this.NuevoButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.NuevoButton.Location = new System.Drawing.Point(36, 191);
+            this.NuevoButton.Location = new System.Drawing.Point(36, 259);
             this.NuevoButton.Name = "NuevoButton";
             this.NuevoButton.Size = new System.Drawing.Size(56, 49);
             this.NuevoButton.TabIndex = 10;
@@ -190,15 +197,43 @@
             this.NuevoButton.UseVisualStyleBackColor = true;
             this.NuevoButton.Click += new System.EventHandler(this.NuevoButton_Click);
             // 
-            // SuperErrorProvider
+            // label6
             // 
-            this.SuperErrorProvider.ContainerControl = this;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
+            this.label6.Location = new System.Drawing.Point(12, 184);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 16);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Ubicacion";
+            // 
+            // UbicacionComboBox
+            // 
+            this.UbicacionComboBox.FormattingEnabled = true;
+            this.UbicacionComboBox.Location = new System.Drawing.Point(119, 183);
+            this.UbicacionComboBox.Name = "UbicacionComboBox";
+            this.UbicacionComboBox.Size = new System.Drawing.Size(183, 21);
+            this.UbicacionComboBox.TabIndex = 15;
+           
+            // 
+            // AgregarUbicacionButton
+            // 
+            this.AgregarUbicacionButton.Location = new System.Drawing.Point(312, 184);
+            this.AgregarUbicacionButton.Name = "AgregarUbicacionButton";
+            this.AgregarUbicacionButton.Size = new System.Drawing.Size(33, 24);
+            this.AgregarUbicacionButton.TabIndex = 16;
+            this.AgregarUbicacionButton.Text = "+";
+            this.AgregarUbicacionButton.UseVisualStyleBackColor = true;
+            this.AgregarUbicacionButton.Click += new System.EventHandler(this.AgregarUbicacionButton_Click);
             // 
             // rProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(322, 259);
+            this.ClientSize = new System.Drawing.Size(448, 358);
+            this.Controls.Add(this.AgregarUbicacionButton);
+            this.Controls.Add(this.UbicacionComboBox);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.BuscarButton);
             this.Controls.Add(this.EliminarButton);
             this.Controls.Add(this.GuardarButton);
@@ -215,6 +250,7 @@
             this.Controls.Add(this.label1);
             this.Name = "rProductos";
             this.Text = "rProductos";
+            this.Load += new System.EventHandler(this.RProductos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ProductoIdNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuperErrorProvider)).EndInit();
             this.ResumeLayout(false);
@@ -239,5 +275,8 @@
         private System.Windows.Forms.Button EliminarButton;
         private System.Windows.Forms.Button BuscarButton;
         private System.Windows.Forms.ErrorProvider SuperErrorProvider;
+        private System.Windows.Forms.Button AgregarUbicacionButton;
+        private System.Windows.Forms.ComboBox UbicacionComboBox;
+        private System.Windows.Forms.Label label6;
     }
 }

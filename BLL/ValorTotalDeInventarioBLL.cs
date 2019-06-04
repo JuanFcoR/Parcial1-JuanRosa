@@ -40,7 +40,7 @@ namespace Parcial1_JuanRosa.BLL
             try
             {
                
-                    context.Entry(valorTotaInventario).State = EntityState.Modified;
+                context.Entry(valorTotaInventario).State = EntityState.Modified;
                 paso = context.SaveChanges()>0;
                 
                 context.Dispose();

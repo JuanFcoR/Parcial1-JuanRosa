@@ -63,7 +63,9 @@ namespace Parcial1_JuanRosa.BLL
                 Productos Producto = contexto.Productos.Find(id);
                 contexto.Productos.Remove(Producto);
                 paso = contexto.SaveChanges() > 0;
+                contexto.Dispose();
             }
+            
             catch (Exception)
             {
 
